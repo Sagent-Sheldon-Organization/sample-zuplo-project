@@ -19024,7 +19024,7 @@
       },
       "status": {
         "type": "string",
-        "description": "pet status in the store",
+        "description": "entities status in the store",
         "enum": [
           "available",
           "pending",
@@ -19104,7 +19104,7 @@
     },
     _routes__ap1_v1_entity_findByStatus_get: {
       "tags": [
-        "pet"
+        "entities"
       ],
       "summary": "Find all entities by status",
       "operationId": "findPetsByStatus",
@@ -19180,7 +19180,7 @@
     },
     _routes__ap1_v1_entity_update_put: {
       "tags": [
-        "pet"
+        "entities"
       ],
       "summary": "Update an existing entity",
       "operationId": "updatePet",
@@ -19226,7 +19226,7 @@
     },
     _routes__ap1_v1_entity_delete__entityId__delete: {
       "tags": [
-        "pet"
+        "entities"
       ],
       "summary": "Deletes an Entity",
       "operationId": "deletePet",
@@ -19285,7 +19285,7 @@
     },
     _routes__api_v1_entity_create_post: {
       "tags": [
-        "pet"
+        "entities"
       ],
       "summary": "Create a new Entity",
       "operationId": "addPet",
@@ -19384,8 +19384,8 @@
 
   // ../usr/dev/projects/34b31b7e6a57d29ac5a7ed89e1241794a9531eb1/sapphire_fluffy_amphibian/sagentzuplo/.zuplo/build.json
   var build_default = {
-    BUILD_ID: "babe3f95-5cf3-4f6f-900e-d52ed62fd817",
-    TIMESTAMP: "2024-03-20T12:15:40.562Z",
+    BUILD_ID: "158d0961-7766-4f42-b78c-e21480723eec",
+    TIMESTAMP: "2024-03-20T12:35:40.971Z",
     IS_PRODUCTION: true,
     BUILD_ENV: "production",
     ZUPLO_VERSION: "5.1977.0",
