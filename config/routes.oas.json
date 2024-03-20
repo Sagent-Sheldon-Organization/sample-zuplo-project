@@ -74,7 +74,7 @@
       },
       "get": {
         "tags": [
-          "pet"
+          "entities"
         ],
         "summary": "Find all entities by status",
         "description": "Multiple status values can be provided with comma separated strings",
@@ -157,7 +157,7 @@
       },
       "put": {
         "tags": [
-          "pet"
+          "entities"
         ],
         "summary": "Update an existing entity",
         "description": "",
@@ -208,7 +208,7 @@
       },
       "delete": {
         "tags": [
-          "pet"
+          "entities"
         ],
         "summary": "Deletes an Entity",
         "description": "",
@@ -270,7 +270,7 @@
       },
       "post": {
         "tags": [
-          "pet"
+          "entities"
         ],
         "summary": "Create a new Entity",
         "description": "",
@@ -454,7 +454,7 @@
           },
           "status": {
             "type": "string",
-            "description": "pet status in the store",
+            "description": "entities status in the store",
             "enum": [
               "available",
               "pending",
