@@ -5,7 +5,7 @@ export default async function (request: ZuploRequest, context: ZuploContext) {
    * Use the log property on context to enjoy
    * logging magic when testing your API.
    */
-  context.log.info(`Hi, from inside your zup!`);
+  context.log.info(`Inside Zuplo.`);
 
   /**
    * If you want to proxy an API, you can simply
@@ -17,5 +17,5 @@ export default async function (request: ZuploRequest, context: ZuploContext) {
   /**
    * In this example, we're just going to return some content.
    */
-  return "What zup?";
+  return "Zuplo is working fine !!";
 }
