@@ -129,8 +129,8 @@
         "security": [
           {
             "petstore_auth": [
-              "write:pets",
-              "read:pets"
+              "write:entities",
+              "read:entities"
             ]
           }
         ],
@@ -177,8 +177,8 @@
         "security": [
           {
             "petstore_auth": [
-              "write:pets",
-              "read:pets"
+              "write:entities",
+              "read:entities"
             ]
           }
         ],
@@ -244,8 +244,8 @@
         "security": [
           {
             "petstore_auth": [
-              "write:pets",
-              "read:pets"
+              "write:entities",
+              "read:entities"
             ]
           }
         ],
@@ -284,8 +284,8 @@
         "security": [
           {
             "petstore_auth": [
-              "write:pets",
-              "read:pets"
+              "write:entities",
+              "read:entities"
             ]
           }
         ],
@@ -521,8 +521,8 @@
           "implicit": {
             "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
             "scopes": {
-              "write:pets": "modify pets in your account",
-              "read:pets": "read your pets"
+              "write:entities": "modify pets in your account",
+              "read:entities": "read your pets"
             }
           }
         }
