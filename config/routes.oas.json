@@ -108,7 +108,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Pet"
+                    "$ref": "#/components/schemas/Entity"
                   }
                 }
               },
@@ -116,7 +116,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Pet"
+                    "$ref": "#/components/schemas/Entity"
                   }
                 }
               }
@@ -168,7 +168,7 @@
             "description": "Invalid ID supplied"
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Entity not found"
           },
           "405": {
             "description": "Validation exception"
@@ -183,7 +183,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/Pet"
+          "$ref": "#/components/requestBodies/Entity"
         },
         "x-zuplo-route": {
           "corsPolicy": "none",
@@ -225,7 +225,7 @@
           {
             "name": "petId",
             "in": "path",
-            "description": "Pet id to delete",
+            "description": "Entity id to delete",
             "required": true,
             "schema": {
               "type": "integer",
@@ -238,7 +238,7 @@
             "description": "Invalid ID supplied"
           },
           "404": {
-            "description": "Pet not found"
+            "description": "Entity not found"
           }
         },
         "security": [
@@ -290,7 +290,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/Pet"
+          "$ref": "#/components/requestBodies/Entity"
         },
         "x-internal": false,
         "x-zuplo-route": {
@@ -413,7 +413,7 @@
           "name": "Tag"
         }
       },
-      "Pet": {
+      "Entity": {
         "type": "object",
         "required": [
           "name",
@@ -463,7 +463,7 @@
           }
         },
         "xml": {
-          "name": "Pet"
+          "name": "Entity"
         }
       },
       "ApiResponse": {
@@ -483,20 +483,20 @@
       }
     },
     "requestBodies": {
-      "Pet": {
+      "Entity": {
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Pet"
+              "$ref": "#/components/schemas/Entity"
             }
           },
           "application/xml": {
             "schema": {
-              "$ref": "#/components/schemas/Pet"
+              "$ref": "#/components/schemas/Entity"
             }
           }
         },
-        "description": "Pet object that needs to be added to the store",
+        "description": "Entity object that needs to be added to the store",
         "required": true
       },
       "UserArray": {
