@@ -24,7 +24,7 @@
   },
   "tags": [
     {
-      "name": "pet",
+      "name": "entities",
       "description": "Everything about your Pets",
       "externalDocs": {
         "description": "Find out more",
