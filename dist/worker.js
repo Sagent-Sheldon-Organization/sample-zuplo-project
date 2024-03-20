@@ -19033,7 +19033,7 @@
       }
     },
     "xml": {
-      "name": "Pet"
+      "name": "Entity"
     }
   };
   var routes_refsData_1 = {
@@ -19075,7 +19075,7 @@
         schema: routes_refsData_0
       }
     },
-    "description": "Pet object that needs to be added to the store",
+    "description": "Entity object that needs to be added to the store",
     "required": true
   };
   var rawRouteData = {
@@ -19190,7 +19190,7 @@
           "description": "Invalid ID supplied"
         },
         "404": {
-          "description": "Pet not found"
+          "description": "Entity not found"
         },
         "405": {
           "description": "Validation exception"
@@ -19242,7 +19242,7 @@
         {
           "name": "petId",
           "in": "path",
-          "description": "Pet id to delete",
+          "description": "Entity id to delete",
           "required": true,
           "schema": {
             "type": "integer",
@@ -19255,7 +19255,7 @@
           "description": "Invalid ID supplied"
         },
         "404": {
-          "description": "Pet not found"
+          "description": "Entity not found"
         }
       },
       "security": [
@@ -19384,8 +19384,8 @@
 
   // ../usr/dev/projects/34b31b7e6a57d29ac5a7ed89e1241794a9531eb1/sapphire_fluffy_amphibian/sagentzuplo/.zuplo/build.json
   var build_default = {
-    BUILD_ID: "158d0961-7766-4f42-b78c-e21480723eec",
-    TIMESTAMP: "2024-03-20T12:35:40.971Z",
+    BUILD_ID: "7a067a1f-632b-41eb-b18f-03fd719982a3",
+    TIMESTAMP: "2024-03-20T12:44:58.434Z",
     IS_PRODUCTION: true,
     BUILD_ENV: "production",
     ZUPLO_VERSION: "5.1977.0",
