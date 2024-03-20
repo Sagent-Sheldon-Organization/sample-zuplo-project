@@ -19154,8 +19154,8 @@
       "security": [
         {
           "petstore_auth": [
-            "write:pets",
-            "read:pets"
+            "write:entities",
+            "read:entities"
           ]
         }
       ],
@@ -19199,8 +19199,8 @@
       "security": [
         {
           "petstore_auth": [
-            "write:pets",
-            "read:pets"
+            "write:entities",
+            "read:entities"
           ]
         }
       ],
@@ -19261,8 +19261,8 @@
       "security": [
         {
           "petstore_auth": [
-            "write:pets",
-            "read:pets"
+            "write:entities",
+            "read:entities"
           ]
         }
       ],
@@ -19298,8 +19298,8 @@
       "security": [
         {
           "petstore_auth": [
-            "write:pets",
-            "read:pets"
+            "write:entities",
+            "read:entities"
           ]
         }
       ],
@@ -19384,8 +19384,8 @@
 
   // ../usr/dev/projects/34b31b7e6a57d29ac5a7ed89e1241794a9531eb1/sapphire_fluffy_amphibian/sagentzuplo/.zuplo/build.json
   var build_default = {
-    BUILD_ID: "71136594-fad3-4627-9212-bcbd1bfe3570",
-    TIMESTAMP: "2024-03-20T12:53:24.188Z",
+    BUILD_ID: "0688b7b7-53d0-4c7d-a3a2-d8356134773b",
+    TIMESTAMP: "2024-03-20T13:07:18.496Z",
     IS_PRODUCTION: true,
     BUILD_ENV: "production",
     ZUPLO_VERSION: "5.1977.0",
