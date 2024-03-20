@@ -68,101 +68,6 @@
         "operationId": "f8d5c981-b173-4d3d-8a74-ce1f3f1ea2a3"
       }
     },
-    "/api/v1/create": {
-      "x-zuplo-path": {
-        "pathMode": "open-api"
-      },
-      "post": {
-        "tags": [
-          "pet"
-        ],
-        "summary": "Create a new Entity",
-        "description": "",
-        "operationId": "addPet",
-        "parameters": [],
-        "responses": {
-          "405": {
-            "description": "Invalid input"
-          }
-        },
-        "security": [
-          {
-            "petstore_auth": [
-              "write:pets",
-              "read:pets"
-            ]
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/Pet"
-        },
-        "x-internal": false,
-        "x-zuplo-route": {
-          "corsPolicy": "none",
-          "handler": {
-            "export": "urlForwardHandler",
-            "module": "$import(@zuplo/runtime)",
-            "options": {
-              "baseUrl": "http://sagent-sample-url"
-            }
-          },
-          "policies": {
-            "inbound": []
-          }
-        }
-      }
-    },
-    "/ap1/v1/update": {
-      "x-zuplo-path": {
-        "pathMode": "open-api"
-      },
-      "put": {
-        "tags": [
-          "pet"
-        ],
-        "summary": "Update an existing entity",
-        "description": "",
-        "operationId": "updatePet",
-        "parameters": [],
-        "responses": {
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Pet not found"
-          },
-          "405": {
-            "description": "Validation exception"
-          }
-        },
-        "security": [
-          {
-            "petstore_auth": [
-              "write:pets",
-              "read:pets"
-            ]
-          }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/Pet"
-        },
-        "x-zuplo-route": {
-          "corsPolicy": "none",
-          "handler": {
-            "export": "urlForwardHandler",
-            "module": "$import(@zuplo/runtime)",
-            "options": {
-              "baseUrl": "http://sagent-sample-url"
-            }
-          },
-          "policies": {
-            "inbound": [
-              "rate-limit-inbound"
-            ]
-          }
-        }
-      }
-    },
     "/ap1/v1/entity/findByStatus": {
       "x-zuplo-path": {
         "pathMode": "open-api"
@@ -246,7 +151,58 @@
         }
       }
     },
-    "/ap1/v1/delete/{entityId}": {
+    "/ap1/v1/entity/update": {
+      "x-zuplo-path": {
+        "pathMode": "open-api"
+      },
+      "put": {
+        "tags": [
+          "pet"
+        ],
+        "summary": "Update an existing entity",
+        "description": "",
+        "operationId": "updatePet",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Pet"
+        },
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "export": "urlForwardHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "baseUrl": "http://sagent-sample-url"
+            }
+          },
+          "policies": {
+            "inbound": [
+              "rate-limit-inbound"
+            ]
+          }
+        }
+      }
+    },
+    "/ap1/v1/entity/delete/{entityId}": {
       "x-zuplo-path": {
         "pathMode": "open-api"
       },
@@ -293,6 +249,50 @@
             ]
           }
         ],
+        "x-zuplo-route": {
+          "corsPolicy": "none",
+          "handler": {
+            "export": "urlForwardHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "baseUrl": "http://sagent-sample-url"
+            }
+          },
+          "policies": {
+            "inbound": []
+          }
+        }
+      }
+    },
+    "/api/v1/entity/create": {
+      "x-zuplo-path": {
+        "pathMode": "open-api"
+      },
+      "post": {
+        "tags": [
+          "pet"
+        ],
+        "summary": "Create a new Entity",
+        "description": "",
+        "operationId": "addPet",
+        "parameters": [],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Pet"
+        },
+        "x-internal": false,
         "x-zuplo-route": {
           "corsPolicy": "none",
           "handler": {

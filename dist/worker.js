@@ -18988,18 +18988,6 @@
 
   // raw-route:./raw.json
   var routes_refsData_0 = {
-    "content": {
-      "application/json": {
-        schema: routes_refsData_1
-      },
-      "application/xml": {
-        schema: routes_refsData_1
-      }
-    },
-    "description": "Pet object that needs to be added to the store",
-    "required": true
-  };
-  var routes_refsData_1 = {
     "type": "object",
     "required": [
       "name",
@@ -19011,7 +18999,7 @@
         "format": "int64",
         "readOnly": true
       },
-      category: routes_refsData_2,
+      category: routes_refsData_1,
       "name": {
         "type": "string",
         "example": "doggie"
@@ -19032,7 +19020,7 @@
           "name": "tag",
           "wrapped": true
         },
-        items: routes_refsData_3
+        items: routes_refsData_2
       },
       "status": {
         "type": "string",
@@ -19048,7 +19036,7 @@
       "name": "Pet"
     }
   };
-  var routes_refsData_2 = {
+  var routes_refsData_1 = {
     "type": "object",
     "properties": {
       "id": {
@@ -19063,7 +19051,7 @@
       "name": "Category"
     }
   };
-  var routes_refsData_3 = {
+  var routes_refsData_2 = {
     "type": "object",
     "properties": {
       "id": {
@@ -19077,6 +19065,18 @@
     "xml": {
       "name": "Tag"
     }
+  };
+  var routes_refsData_3 = {
+    "content": {
+      "application/json": {
+        schema: routes_refsData_0
+      },
+      "application/xml": {
+        schema: routes_refsData_0
+      }
+    },
+    "description": "Pet object that needs to be added to the store",
+    "required": true
   };
   var rawRouteData = {
     _routes__openapi_x_zuplo_path: {
@@ -19098,91 +19098,6 @@
         }
       },
       "operationId": "f8d5c981-b173-4d3d-8a74-ce1f3f1ea2a3"
-    },
-    _routes__api_v1_create_x_zuplo_path: {
-      "pathMode": "open-api"
-    },
-    _routes__api_v1_create_post: {
-      "tags": [
-        "pet"
-      ],
-      "summary": "Create a new Entity",
-      "operationId": "addPet",
-      "parameters": [],
-      "responses": {
-        "405": {
-          "description": "Invalid input"
-        }
-      },
-      "security": [
-        {
-          "petstore_auth": [
-            "write:pets",
-            "read:pets"
-          ]
-        }
-      ],
-      requestBody: routes_refsData_0,
-      "x-internal": false,
-      "x-zuplo-route": {
-        "corsPolicy": "none",
-        "handler": {
-          "export": "urlForwardHandler",
-          "module": "$import(@zuplo/runtime)",
-          "options": {
-            "baseUrl": "http://sagent-sample-url"
-          }
-        },
-        "policies": {
-          "inbound": []
-        }
-      }
-    },
-    _routes__ap1_v1_update_x_zuplo_path: {
-      "pathMode": "open-api"
-    },
-    _routes__ap1_v1_update_put: {
-      "tags": [
-        "pet"
-      ],
-      "summary": "Update an existing entity",
-      "operationId": "updatePet",
-      "parameters": [],
-      "responses": {
-        "400": {
-          "description": "Invalid ID supplied"
-        },
-        "404": {
-          "description": "Pet not found"
-        },
-        "405": {
-          "description": "Validation exception"
-        }
-      },
-      "security": [
-        {
-          "petstore_auth": [
-            "write:pets",
-            "read:pets"
-          ]
-        }
-      ],
-      requestBody: routes_refsData_0,
-      "x-zuplo-route": {
-        "corsPolicy": "none",
-        "handler": {
-          "export": "urlForwardHandler",
-          "module": "$import(@zuplo/runtime)",
-          "options": {
-            "baseUrl": "http://sagent-sample-url"
-          }
-        },
-        "policies": {
-          "inbound": [
-            "rate-limit-inbound"
-          ]
-        }
-      }
     },
     _routes__ap1_v1_entity_findByStatus_x_zuplo_path: {
       "pathMode": "open-api"
@@ -19221,13 +19136,13 @@
             "application/xml": {
               "schema": {
                 "type": "array",
-                items: routes_refsData_1
+                items: routes_refsData_0
               }
             },
             "application/json": {
               "schema": {
                 "type": "array",
-                items: routes_refsData_1
+                items: routes_refsData_0
               }
             }
           }
@@ -19260,10 +19175,56 @@
         }
       }
     },
-    _routes__ap1_v1_delete__entityId__x_zuplo_path: {
+    _routes__ap1_v1_entity_update_x_zuplo_path: {
       "pathMode": "open-api"
     },
-    _routes__ap1_v1_delete__entityId__delete: {
+    _routes__ap1_v1_entity_update_put: {
+      "tags": [
+        "pet"
+      ],
+      "summary": "Update an existing entity",
+      "operationId": "updatePet",
+      "parameters": [],
+      "responses": {
+        "400": {
+          "description": "Invalid ID supplied"
+        },
+        "404": {
+          "description": "Pet not found"
+        },
+        "405": {
+          "description": "Validation exception"
+        }
+      },
+      "security": [
+        {
+          "petstore_auth": [
+            "write:pets",
+            "read:pets"
+          ]
+        }
+      ],
+      requestBody: routes_refsData_3,
+      "x-zuplo-route": {
+        "corsPolicy": "none",
+        "handler": {
+          "export": "urlForwardHandler",
+          "module": "$import(@zuplo/runtime)",
+          "options": {
+            "baseUrl": "http://sagent-sample-url"
+          }
+        },
+        "policies": {
+          "inbound": [
+            "rate-limit-inbound"
+          ]
+        }
+      }
+    },
+    _routes__ap1_v1_entity_delete__entityId__x_zuplo_path: {
+      "pathMode": "open-api"
+    },
+    _routes__ap1_v1_entity_delete__entityId__delete: {
       "tags": [
         "pet"
       ],
@@ -19318,6 +19279,45 @@
           "inbound": []
         }
       }
+    },
+    _routes__api_v1_entity_create_x_zuplo_path: {
+      "pathMode": "open-api"
+    },
+    _routes__api_v1_entity_create_post: {
+      "tags": [
+        "pet"
+      ],
+      "summary": "Create a new Entity",
+      "operationId": "addPet",
+      "parameters": [],
+      "responses": {
+        "405": {
+          "description": "Invalid input"
+        }
+      },
+      "security": [
+        {
+          "petstore_auth": [
+            "write:pets",
+            "read:pets"
+          ]
+        }
+      ],
+      requestBody: routes_refsData_3,
+      "x-internal": false,
+      "x-zuplo-route": {
+        "corsPolicy": "none",
+        "handler": {
+          "export": "urlForwardHandler",
+          "module": "$import(@zuplo/runtime)",
+          "options": {
+            "baseUrl": "http://sagent-sample-url"
+          }
+        },
+        "policies": {
+          "inbound": []
+        }
+      }
     }
   };
   var raw_default = rawRouteData;
@@ -19329,24 +19329,6 @@
         return raw_default._routes__openapi_get;
       }, version: "none", methods: ["GET"], pathPattern: "/openapi{/}?", path: "/openapi", corsPolicy: "anything-goes", handler: { export: "openApiSpecHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { openApiFilePath: "./config/routes.oas.json" } }, policies: { inbound: [] } },
       { raw: () => {
-        return raw_default._routes__api_v1_create_post;
-      }, version: "none", methods: ["POST"], pathPattern: "/api/v1/create{/}?", path: "/api/v1/create", corsPolicy: "none", handler: { export: "urlForwardHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { baseUrl: "http://sagent-sample-url", __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://sagent-sample-url`;
-      } } }, policies: { inbound: [] } },
-      { raw: () => {
-        return raw_default._routes__ap1_v1_update_put;
-      }, version: "none", methods: ["PUT"], pathPattern: "/ap1/v1/update{/}?", path: "/ap1/v1/update", corsPolicy: "none", handler: { export: "urlForwardHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { baseUrl: "http://sagent-sample-url", __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://sagent-sample-url`;
-      } } }, policies: { inbound: ["rate-limit-inbound"] } },
-      { raw: () => {
         return raw_default._routes__ap1_v1_entity_findByStatus_get;
       }, version: "none", methods: ["GET"], pathPattern: "/ap1/v1/entity/findByStatus{/}?", path: "/ap1/v1/entity/findByStatus", corsPolicy: "none", handler: { export: "urlForwardHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { baseUrl: "http://sagent-sample-url", __rewriteFunction: (request, context) => {
         const { params, url, query, method, headers } = request;
@@ -19356,8 +19338,26 @@
         return `http://sagent-sample-url`;
       } } }, policies: { inbound: ["rate-limit-inbound"] } },
       { raw: () => {
-        return raw_default._routes__ap1_v1_delete__entityId__delete;
-      }, version: "none", methods: ["DELETE"], pathPattern: "/ap1/v1/delete/:entityId{/}?", path: "/ap1/v1/delete/{entityId}", corsPolicy: "none", handler: { export: "urlForwardHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { baseUrl: "http://sagent-sample-url", __rewriteFunction: (request, context) => {
+        return raw_default._routes__ap1_v1_entity_update_put;
+      }, version: "none", methods: ["PUT"], pathPattern: "/ap1/v1/entity/update{/}?", path: "/ap1/v1/entity/update", corsPolicy: "none", handler: { export: "urlForwardHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { baseUrl: "http://sagent-sample-url", __rewriteFunction: (request, context) => {
+        const { params, url, query, method, headers } = request;
+        const { host, hostname, origin, pathname, port, search } = new URL(url);
+        const e = encodeURIComponent;
+        const env = environment;
+        return `http://sagent-sample-url`;
+      } } }, policies: { inbound: ["rate-limit-inbound"] } },
+      { raw: () => {
+        return raw_default._routes__ap1_v1_entity_delete__entityId__delete;
+      }, version: "none", methods: ["DELETE"], pathPattern: "/ap1/v1/entity/delete/:entityId{/}?", path: "/ap1/v1/entity/delete/{entityId}", corsPolicy: "none", handler: { export: "urlForwardHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { baseUrl: "http://sagent-sample-url", __rewriteFunction: (request, context) => {
+        const { params, url, query, method, headers } = request;
+        const { host, hostname, origin, pathname, port, search } = new URL(url);
+        const e = encodeURIComponent;
+        const env = environment;
+        return `http://sagent-sample-url`;
+      } } }, policies: { inbound: [] } },
+      { raw: () => {
+        return raw_default._routes__api_v1_entity_create_post;
+      }, version: "none", methods: ["POST"], pathPattern: "/api/v1/entity/create{/}?", path: "/api/v1/entity/create", corsPolicy: "none", handler: { export: "urlForwardHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { baseUrl: "http://sagent-sample-url", __rewriteFunction: (request, context) => {
         const { params, url, query, method, headers } = request;
         const { host, hostname, origin, pathname, port, search } = new URL(url);
         const e = encodeURIComponent;
@@ -19384,8 +19384,8 @@
 
   // ../usr/dev/projects/34b31b7e6a57d29ac5a7ed89e1241794a9531eb1/sapphire_fluffy_amphibian/sagentzuplo/.zuplo/build.json
   var build_default = {
-    BUILD_ID: "3c379f5d-3085-46df-b8d4-fc0bf1f82137",
-    TIMESTAMP: "2024-03-20T11:39:26.981Z",
+    BUILD_ID: "d6c9f81b-7b5b-4b97-b5e6-70df6aa81b94",
+    TIMESTAMP: "2024-03-20T11:52:05.234Z",
     IS_PRODUCTION: true,
     BUILD_ENV: "production",
     ZUPLO_VERSION: "5.1977.0",
