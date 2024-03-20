@@ -19078,111 +19078,35 @@
       "name": "Tag"
     }
   };
-  var routes_refsData_4 = {
-    "type": "object",
-    "properties": {
-      "code": {
-        "type": "integer",
-        "format": "int32"
-      },
-      "type": {
-        "type": "string"
-      },
-      "message": {
-        "type": "string"
-      }
-    }
-  };
-  var routes_refsData_5 = {
-    "type": "object",
-    "properties": {
-      "id": {
-        "type": "integer",
-        "format": "int64"
-      },
-      "petId": {
-        "type": "integer",
-        "format": "int64"
-      },
-      "quantity": {
-        "type": "integer",
-        "format": "int32"
-      },
-      "shipDate": {
-        "type": "string",
-        "format": "date-time"
-      },
-      "status": {
-        "type": "string",
-        "description": "Order Status",
-        "enum": [
-          "placed",
-          "approved",
-          "delivered"
-        ]
-      },
-      "complete": {
-        "type": "boolean",
-        "default": false
-      }
-    },
-    "xml": {
-      "name": "Order"
-    }
-  };
-  var routes_refsData_6 = {
-    "type": "object",
-    "properties": {
-      "id": {
-        "type": "integer",
-        "format": "int64"
-      },
-      "username": {
-        "type": "string"
-      },
-      "firstName": {
-        "type": "string"
-      },
-      "lastName": {
-        "type": "string"
-      },
-      "email": {
-        "type": "string"
-      },
-      "password": {
-        "type": "string"
-      },
-      "phone": {
-        "type": "string"
-      },
-      "userStatus": {
-        "type": "integer",
-        "format": "int32",
-        "description": "User Status"
-      }
-    },
-    "xml": {
-      "name": "User"
-    }
-  };
-  var routes_refsData_7 = {
-    "content": {
-      "application/json": {
-        "schema": {
-          "type": "array",
-          items: routes_refsData_6
-        }
-      }
-    },
-    "description": "List of user object",
-    "required": true
-  };
   var rawRouteData = {
-    _routes__pet_post: {
+    _routes__openapi_x_zuplo_path: {
+      "pathMode": "open-api"
+    },
+    _routes__openapi_get: {
+      "summary": "OpenAPI Spec",
+      "x-zuplo-route": {
+        "corsPolicy": "anything-goes",
+        "handler": {
+          "export": "openApiSpecHandler",
+          "module": "$import(@zuplo/runtime)",
+          "options": {
+            "openApiFilePath": "./config/routes.oas.json"
+          }
+        },
+        "policies": {
+          "inbound": []
+        }
+      },
+      "operationId": "f8d5c981-b173-4d3d-8a74-ce1f3f1ea2a3"
+    },
+    _routes__api_v1_create_x_zuplo_path: {
+      "pathMode": "open-api"
+    },
+    _routes__api_v1_create_post: {
       "tags": [
         "pet"
       ],
-      "summary": "Test Post",
+      "summary": "Create a new Entity",
       "operationId": "addPet",
       "parameters": [],
       "responses": {
@@ -19199,13 +19123,29 @@
         }
       ],
       requestBody: routes_refsData_0,
-      "x-internal": false
+      "x-internal": false,
+      "x-zuplo-route": {
+        "corsPolicy": "none",
+        "handler": {
+          "export": "urlForwardHandler",
+          "module": "$import(@zuplo/runtime)",
+          "options": {
+            "baseUrl": "http://sagent-sample-url"
+          }
+        },
+        "policies": {
+          "inbound": []
+        }
+      }
     },
-    _routes__pet_put: {
+    _routes__ap1_v1_update_x_zuplo_path: {
+      "pathMode": "open-api"
+    },
+    _routes__ap1_v1_update_put: {
       "tags": [
         "pet"
       ],
-      "summary": "Update an existing pet",
+      "summary": "Update an existing entity",
       "operationId": "updatePet",
       "parameters": [],
       "responses": {
@@ -19234,7 +19174,7 @@
           "export": "urlForwardHandler",
           "module": "$import(@zuplo/runtime)",
           "options": {
-            "baseUrl": "http://petstore.swagger.io/v2"
+            "baseUrl": "http://sagent-sample-url"
           }
         },
         "policies": {
@@ -19244,11 +19184,14 @@
         }
       }
     },
-    _routes__pet_findByStatus_get: {
+    _routes__ap1_v1_entity_findByStatus_x_zuplo_path: {
+      "pathMode": "open-api"
+    },
+    _routes__ap1_v1_entity_findByStatus_get: {
       "tags": [
         "pet"
       ],
-      "summary": "Finds Pets by status",
+      "summary": "Find all entities by status",
       "operationId": "findPetsByStatus",
       "parameters": [
         {
@@ -19307,7 +19250,7 @@
           "export": "urlForwardHandler",
           "module": "$import(@zuplo/runtime)",
           "options": {
-            "baseUrl": "http://petstore.swagger.io/v2"
+            "baseUrl": "http://sagent-sample-url"
           }
         },
         "policies": {
@@ -19317,161 +19260,14 @@
         }
       }
     },
-    _routes__pet_findByTags_get: {
-      "tags": [
-        "pet"
-      ],
-      "summary": "Finds Pets by tags",
-      "operationId": "findPetsByTags",
-      "parameters": [
-        {
-          "name": "tags",
-          "in": "query",
-          "description": "Tags to filter by",
-          "required": true,
-          "explode": true,
-          "schema": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "successful operation",
-          "content": {
-            "application/xml": {
-              "schema": {
-                "type": "array",
-                items: routes_refsData_1
-              }
-            },
-            "application/json": {
-              "schema": {
-                "type": "array",
-                items: routes_refsData_1
-              }
-            }
-          }
-        },
-        "400": {
-          "description": "Invalid tag value"
-        }
-      },
-      "security": [
-        {
-          "petstore_auth": [
-            "write:pets",
-            "read:pets"
-          ]
-        }
-      ],
-      "deprecated": true
+    _routes__ap1_v1_delete__entityId__x_zuplo_path: {
+      "pathMode": "open-api"
     },
-    _routes__pet__petId__get: {
+    _routes__ap1_v1_delete__entityId__delete: {
       "tags": [
         "pet"
       ],
-      "summary": "Find pet by ID",
-      "operationId": "getPetById",
-      "parameters": [
-        {
-          "name": "petId",
-          "in": "path",
-          "description": "ID of pet to return",
-          "required": true,
-          "schema": {
-            "type": "integer",
-            "format": "int64"
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "successful operation",
-          "content": {
-            "application/xml": {
-              schema: routes_refsData_1
-            },
-            "application/json": {
-              schema: routes_refsData_1
-            }
-          }
-        },
-        "400": {
-          "description": "Invalid ID supplied"
-        },
-        "404": {
-          "description": "Pet not found"
-        },
-        "default": {
-          "description": "successful response"
-        }
-      },
-      "security": [
-        {
-          "api_key": []
-        }
-      ]
-    },
-    _routes__pet__petId__post: {
-      "tags": [
-        "pet"
-      ],
-      "summary": "Updates a pet in the store with form data",
-      "operationId": "updatePetWithForm",
-      "parameters": [
-        {
-          "name": "petId",
-          "in": "path",
-          "description": "ID of pet that needs to be updated",
-          "required": true,
-          "schema": {
-            "type": "integer",
-            "format": "int64"
-          }
-        }
-      ],
-      "responses": {
-        "405": {
-          "description": "Invalid input"
-        }
-      },
-      "security": [
-        {
-          "petstore_auth": [
-            "write:pets",
-            "read:pets"
-          ]
-        }
-      ],
-      "requestBody": {
-        "content": {
-          "application/x-www-form-urlencoded": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "description": "Updated name of the pet",
-                  "type": "string"
-                },
-                "status": {
-                  "description": "Updated status of the pet",
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    _routes__pet__petId__delete: {
-      "tags": [
-        "pet"
-      ],
-      "summary": "Deletes a pet",
+      "summary": "Deletes an Entity",
       "operationId": "deletePet",
       "parameters": [
         {
@@ -19508,428 +19304,20 @@
             "read:pets"
           ]
         }
-      ]
-    },
-    _routes__pet__petId__uploadImage_post: {
-      "tags": [
-        "pet"
       ],
-      "summary": "uploads an image",
-      "operationId": "uploadFile",
-      "parameters": [
-        {
-          "name": "petId",
-          "in": "path",
-          "description": "ID of pet to update",
-          "required": true,
-          "schema": {
-            "type": "integer",
-            "format": "int64"
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "successful operation",
-          "content": {
-            "application/json": {
-              schema: routes_refsData_4
-            }
-          }
-        }
-      },
-      "security": [
-        {
-          "petstore_auth": [
-            "write:pets",
-            "read:pets"
-          ]
-        }
-      ],
-      "requestBody": {
-        "content": {
-          "application/octet-stream": {
-            "schema": {
-              "type": "string",
-              "format": "binary"
-            }
-          }
-        }
-      }
-    },
-    _routes__store_inventory_get: {
-      "tags": [
-        "store"
-      ],
-      "summary": "Returns pet inventories by status",
-      "operationId": "getInventory",
-      "parameters": [],
-      "responses": {
-        "200": {
-          "description": "successful operation",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "additionalProperties": {
-                  "type": "integer",
-                  "format": "int32"
-                }
-              }
-            }
-          }
-        }
-      },
-      "security": [
-        {
-          "api_key": []
-        }
-      ]
-    },
-    _routes__store_order_post: {
-      "tags": [
-        "store"
-      ],
-      "summary": "Place an order for a pet",
-      "operationId": "placeOrder",
-      "parameters": [],
-      "responses": {
-        "200": {
-          "description": "successful operation",
-          "content": {
-            "application/xml": {
-              schema: routes_refsData_5
-            },
-            "application/json": {
-              schema: routes_refsData_5
-            }
-          }
-        },
-        "400": {
-          "description": "Invalid Order"
-        }
-      },
-      "requestBody": {
-        "content": {
-          "application/json": {
-            schema: routes_refsData_5
-          }
-        },
-        "description": "order placed for purchasing the pet",
-        "required": true
-      }
-    },
-    _routes__store_order__orderId__get: {
-      "tags": [
-        "store"
-      ],
-      "summary": "Find purchase order by ID",
-      "operationId": "getOrderById",
-      "parameters": [
-        {
-          "name": "orderId",
-          "in": "path",
-          "description": "ID of pet that needs to be fetched",
-          "required": true,
-          "schema": {
-            "type": "integer",
-            "format": "int64",
-            "minimum": 1,
-            "maximum": 10
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "successful operation",
-          "content": {
-            "application/xml": {
-              schema: routes_refsData_5
-            },
-            "application/json": {
-              schema: routes_refsData_5
-            }
-          }
-        },
-        "400": {
-          "description": "Invalid ID supplied"
-        },
-        "404": {
-          "description": "Order not found"
-        }
-      }
-    },
-    _routes__store_order__orderId__delete: {
-      "tags": [
-        "store"
-      ],
-      "summary": "Delete purchase order by ID",
-      "operationId": "deleteOrder",
-      "parameters": [
-        {
-          "name": "orderId",
-          "in": "path",
-          "description": "ID of the order that needs to be deleted",
-          "required": true,
-          "schema": {
-            "type": "integer",
-            "format": "int64",
-            "minimum": 1
-          }
-        }
-      ],
-      "responses": {
-        "400": {
-          "description": "Invalid ID supplied"
-        },
-        "404": {
-          "description": "Order not found"
-        }
-      }
-    },
-    _routes__user_post: {
-      "tags": [
-        "user"
-      ],
-      "summary": "Create user",
-      "operationId": "createUser",
-      "parameters": [],
-      "responses": {
-        "default": {
-          "description": "successful operation"
-        }
-      },
-      "requestBody": {
-        "content": {
-          "application/json": {
-            schema: routes_refsData_6
-          }
-        },
-        "description": "Created user object",
-        "required": true
-      }
-    },
-    _routes__user_createWithArray_post: {
-      "tags": [
-        "user"
-      ],
-      "summary": "Creates list of users with given input array",
-      "operationId": "createUsersWithArrayInput",
-      "parameters": [],
-      "responses": {
-        "default": {
-          "description": "successful operation"
-        }
-      },
-      requestBody: routes_refsData_7
-    },
-    _routes__user_createWithList_post: {
-      "tags": [
-        "user"
-      ],
-      "summary": "Creates list of users with given input array",
-      "operationId": "createUsersWithListInput",
-      "parameters": [],
-      "responses": {
-        "default": {
-          "description": "successful operation"
-        }
-      },
-      requestBody: routes_refsData_7
-    },
-    _routes__user_login_get: {
-      "tags": [
-        "user"
-      ],
-      "summary": "Logs user into the system",
-      "operationId": "loginUser",
-      "parameters": [
-        {
-          "name": "username",
-          "in": "query",
-          "description": "The user name for login",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
-        },
-        {
-          "name": "password",
-          "in": "query",
-          "description": "The password for login in clear text",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "successful operation",
-          "headers": {
-            "X-Rate-Limit": {
-              "description": "calls per hour allowed by the user",
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            },
-            "X-Expires-After": {
-              "description": "date in UTC when token expires",
-              "schema": {
-                "type": "string",
-                "format": "date-time"
-              }
-            }
-          },
-          "content": {
-            "application/xml": {
-              "schema": {
-                "type": "string"
-              }
-            },
-            "application/json": {
-              "schema": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "400": {
-          "description": "Invalid username/password supplied"
-        }
-      }
-    },
-    _routes__user_logout_get: {
-      "tags": [
-        "user"
-      ],
-      "summary": "Logs out current logged in user session",
-      "operationId": "logoutUser",
-      "parameters": [],
-      "responses": {
-        "default": {
-          "description": "successful operation"
-        }
-      }
-    },
-    _routes__user__username__get: {
-      "tags": [
-        "user"
-      ],
-      "summary": "Get user by user name",
-      "operationId": "getUserByName",
-      "parameters": [
-        {
-          "name": "username",
-          "in": "path",
-          "description": "The name that needs to be fetched. Use user1 for testing. ",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "responses": {
-        "200": {
-          "description": "successful operation",
-          "content": {
-            "application/xml": {
-              schema: routes_refsData_6
-            },
-            "application/json": {
-              schema: routes_refsData_6
-            }
-          }
-        },
-        "400": {
-          "description": "Invalid username supplied"
-        },
-        "404": {
-          "description": "User not found"
-        }
-      }
-    },
-    _routes__user__username__put: {
-      "tags": [
-        "user"
-      ],
-      "summary": "Updated user",
-      "operationId": "updateUser",
-      "parameters": [
-        {
-          "name": "username",
-          "in": "path",
-          "description": "name that need to be updated",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "responses": {
-        "400": {
-          "description": "Invalid user supplied"
-        },
-        "404": {
-          "description": "User not found"
-        }
-      },
-      "requestBody": {
-        "content": {
-          "application/json": {
-            schema: routes_refsData_6
-          }
-        },
-        "description": "Updated user object",
-        "required": true
-      }
-    },
-    _routes__user__username__delete: {
-      "tags": [
-        "user"
-      ],
-      "summary": "Delete user",
-      "operationId": "deleteUser",
-      "parameters": [
-        {
-          "name": "username",
-          "in": "path",
-          "description": "The name that needs to be deleted",
-          "required": true,
-          "schema": {
-            "type": "string"
-          }
-        }
-      ],
-      "responses": {
-        "400": {
-          "description": "Invalid username supplied"
-        },
-        "404": {
-          "description": "User not found"
-        }
-      }
-    },
-    _routes__openapi_x_zuplo_path: {
-      "pathMode": "open-api"
-    },
-    _routes__openapi_get: {
-      "summary": "OpenAPI Spec",
       "x-zuplo-route": {
-        "corsPolicy": "anything-goes",
+        "corsPolicy": "none",
         "handler": {
-          "export": "openApiSpecHandler",
+          "export": "urlForwardHandler",
           "module": "$import(@zuplo/runtime)",
           "options": {
-            "openApiFilePath": "./config/routes.oas.json"
+            "baseUrl": "http://sagent-sample-url"
           }
         },
         "policies": {
           "inbound": []
         }
-      },
-      "operationId": "f8d5c981-b173-4d3d-8a74-ce1f3f1ea2a3"
+      }
     }
   };
   var raw_default = rawRouteData;
@@ -19938,188 +19326,44 @@
   var routes = /* @__PURE__ */ __name(() => ({
     routes: [
       { raw: () => {
-        return raw_default._routes__pet_post;
-      }, version: "none", methods: ["POST"], pathPattern: "/pet{/}?", path: "/pet", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/pet", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/pet`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__pet_put;
-      }, version: "none", methods: ["PUT"], pathPattern: "/pet{/}?", path: "/pet", corsPolicy: "none", handler: { export: "urlForwardHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { baseUrl: "http://petstore.swagger.io/v2", __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2`;
-      } } }, policies: { inbound: ["rate-limit-inbound"] } },
-      { raw: () => {
-        return raw_default._routes__pet_findByStatus_get;
-      }, version: "none", methods: ["GET"], pathPattern: "/pet/findByStatus{/}?", path: "/pet/findByStatus", corsPolicy: "none", handler: { export: "urlForwardHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { baseUrl: "http://petstore.swagger.io/v2", __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2`;
-      } } }, policies: { inbound: ["rate-limit-inbound"] } },
-      { raw: () => {
-        return raw_default._routes__pet_findByTags_get;
-      }, version: "none", methods: ["GET"], pathPattern: "/pet/findByTags{/}?", path: "/pet/findByTags", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/pet/findByTags", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/pet/findByTags`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__pet__petId__get;
-      }, version: "none", methods: ["GET"], pathPattern: "/pet/:petId{/}?", path: "/pet/{petId}", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/pet/${params.petId}", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/pet/${params.petId}`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__pet__petId__post;
-      }, version: "none", methods: ["POST"], pathPattern: "/pet/:petId{/}?", path: "/pet/{petId}", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/pet/${params.petId}", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/pet/${params.petId}`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__pet__petId__delete;
-      }, version: "none", methods: ["DELETE"], pathPattern: "/pet/:petId{/}?", path: "/pet/{petId}", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/pet/${params.petId}", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/pet/${params.petId}`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__pet__petId__uploadImage_post;
-      }, version: "none", methods: ["POST"], pathPattern: "/pet/:petId/uploadImage{/}?", path: "/pet/{petId}/uploadImage", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/pet/${params.petId}/uploadImage", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/pet/${params.petId}/uploadImage`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__store_inventory_get;
-      }, version: "none", methods: ["GET"], pathPattern: "/store/inventory{/}?", path: "/store/inventory", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/store/inventory", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/store/inventory`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__store_order_post;
-      }, version: "none", methods: ["POST"], pathPattern: "/store/order{/}?", path: "/store/order", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/store/order", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/store/order`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__store_order__orderId__get;
-      }, version: "none", methods: ["GET"], pathPattern: "/store/order/:orderId{/}?", path: "/store/order/{orderId}", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/store/order/${params.orderId}", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/store/order/${params.orderId}`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__store_order__orderId__delete;
-      }, version: "none", methods: ["DELETE"], pathPattern: "/store/order/:orderId{/}?", path: "/store/order/{orderId}", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/store/order/${params.orderId}", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/store/order/${params.orderId}`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__user_post;
-      }, version: "none", methods: ["POST"], pathPattern: "/user{/}?", path: "/user", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/user", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/user`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__user_createWithArray_post;
-      }, version: "none", methods: ["POST"], pathPattern: "/user/createWithArray{/}?", path: "/user/createWithArray", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/user/createWithArray", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/user/createWithArray`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__user_createWithList_post;
-      }, version: "none", methods: ["POST"], pathPattern: "/user/createWithList{/}?", path: "/user/createWithList", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/user/createWithList", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/user/createWithList`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__user_login_get;
-      }, version: "none", methods: ["GET"], pathPattern: "/user/login{/}?", path: "/user/login", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/user/login", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/user/login`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__user_logout_get;
-      }, version: "none", methods: ["GET"], pathPattern: "/user/logout{/}?", path: "/user/logout", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/user/logout", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/user/logout`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__user__username__get;
-      }, version: "none", methods: ["GET"], pathPattern: "/user/:username{/}?", path: "/user/{username}", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/user/${params.username}", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/user/${params.username}`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__user__username__put;
-      }, version: "none", methods: ["PUT"], pathPattern: "/user/:username{/}?", path: "/user/{username}", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/user/${params.username}", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/user/${params.username}`;
-      } } } },
-      { raw: () => {
-        return raw_default._routes__user__username__delete;
-      }, version: "none", methods: ["DELETE"], pathPattern: "/user/:username{/}?", path: "/user/{username}", corsPolicy: "none", handler: { export: "urlRewriteHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rewritePattern: "http://petstore.swagger.io/v2/user/${params.username}", forwardSearch: true, __rewriteFunction: (request, context) => {
-        const { params, url, query, method, headers } = request;
-        const { host, hostname, origin, pathname, port, search } = new URL(url);
-        const e = encodeURIComponent;
-        const env = environment;
-        return `http://petstore.swagger.io/v2/user/${params.username}`;
-      } } } },
-      { raw: () => {
         return raw_default._routes__openapi_get;
-      }, version: "none", methods: ["GET"], pathPattern: "/openapi{/}?", path: "/openapi", corsPolicy: "anything-goes", handler: { export: "openApiSpecHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { openApiFilePath: "./config/routes.oas.json" } }, policies: { inbound: [] } }
+      }, version: "none", methods: ["GET"], pathPattern: "/openapi{/}?", path: "/openapi", corsPolicy: "anything-goes", handler: { export: "openApiSpecHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { openApiFilePath: "./config/routes.oas.json" } }, policies: { inbound: [] } },
+      { raw: () => {
+        return raw_default._routes__api_v1_create_post;
+      }, version: "none", methods: ["POST"], pathPattern: "/api/v1/create{/}?", path: "/api/v1/create", corsPolicy: "none", handler: { export: "urlForwardHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { baseUrl: "http://sagent-sample-url", __rewriteFunction: (request, context) => {
+        const { params, url, query, method, headers } = request;
+        const { host, hostname, origin, pathname, port, search } = new URL(url);
+        const e = encodeURIComponent;
+        const env = environment;
+        return `http://sagent-sample-url`;
+      } } }, policies: { inbound: [] } },
+      { raw: () => {
+        return raw_default._routes__ap1_v1_update_put;
+      }, version: "none", methods: ["PUT"], pathPattern: "/ap1/v1/update{/}?", path: "/ap1/v1/update", corsPolicy: "none", handler: { export: "urlForwardHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { baseUrl: "http://sagent-sample-url", __rewriteFunction: (request, context) => {
+        const { params, url, query, method, headers } = request;
+        const { host, hostname, origin, pathname, port, search } = new URL(url);
+        const e = encodeURIComponent;
+        const env = environment;
+        return `http://sagent-sample-url`;
+      } } }, policies: { inbound: ["rate-limit-inbound"] } },
+      { raw: () => {
+        return raw_default._routes__ap1_v1_entity_findByStatus_get;
+      }, version: "none", methods: ["GET"], pathPattern: "/ap1/v1/entity/findByStatus{/}?", path: "/ap1/v1/entity/findByStatus", corsPolicy: "none", handler: { export: "urlForwardHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { baseUrl: "http://sagent-sample-url", __rewriteFunction: (request, context) => {
+        const { params, url, query, method, headers } = request;
+        const { host, hostname, origin, pathname, port, search } = new URL(url);
+        const e = encodeURIComponent;
+        const env = environment;
+        return `http://sagent-sample-url`;
+      } } }, policies: { inbound: ["rate-limit-inbound"] } },
+      { raw: () => {
+        return raw_default._routes__ap1_v1_delete__entityId__delete;
+      }, version: "none", methods: ["DELETE"], pathPattern: "/ap1/v1/delete/:entityId{/}?", path: "/ap1/v1/delete/{entityId}", corsPolicy: "none", handler: { export: "urlForwardHandler", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { baseUrl: "http://sagent-sample-url", __rewriteFunction: (request, context) => {
+        const { params, url, query, method, headers } = request;
+        const { host, hostname, origin, pathname, port, search } = new URL(url);
+        const e = encodeURIComponent;
+        const env = environment;
+        return `http://sagent-sample-url`;
+      } } }, policies: { inbound: [] } }
     ],
     policies: [{ handler: { export: "RateLimitInboundPolicy", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { rateLimitBy: "ip", requestsAllowed: 2, timeWindowMinutes: 1 } }, name: "rate-limit-inbound", policyType: "rate-limit-inbound" }, { handler: { export: "ApiKeyInboundPolicy", module: (init_index_worker(), __toCommonJS(index_worker_exports)), options: { allowUnauthenticatedRequests: false, cacheTtlSeconds: 60 } }, name: "api-key-inbound", policyType: "api-key-inbound" }],
     corsPolicies: [],
@@ -20140,8 +19384,8 @@
 
   // ../usr/dev/projects/34b31b7e6a57d29ac5a7ed89e1241794a9531eb1/sapphire_fluffy_amphibian/sagentzuplo/.zuplo/build.json
   var build_default = {
-    BUILD_ID: "60455fda-d185-4545-a2b5-1b74d1f58ee3",
-    TIMESTAMP: "2024-03-20T10:12:51.323Z",
+    BUILD_ID: "d99fde55-3970-43f7-83be-f5fd9f970dfc",
+    TIMESTAMP: "2024-03-20T11:25:41.047Z",
     IS_PRODUCTION: true,
     BUILD_ENV: "production",
     ZUPLO_VERSION: "5.1977.0",
