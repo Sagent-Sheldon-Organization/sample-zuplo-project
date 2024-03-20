@@ -25,7 +25,7 @@
   "tags": [
     {
       "name": "entities",
-      "description": "Everything about your Pets",
+      "description": "Everything about your entities",
       "externalDocs": {
         "description": "Find out more",
         "url": "http://swagger.io"
@@ -33,7 +33,7 @@
     },
     {
       "name": "store",
-      "description": "Access to Petstore orders"
+      "description": "Access to Entities"
     },
     {
       "name": "user",
